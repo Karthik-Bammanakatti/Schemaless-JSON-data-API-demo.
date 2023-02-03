@@ -117,12 +117,26 @@ public class DynamicJsonController : ControllerBase
     }
 
     [Route("Test")]
-    public IActionResult Test()
+    public async Task<IActionResult> Test()
     {
-        // We can send Json response wtih custom status code as shown below
+        //Reading the request body from Request.Body (as a stream) and converting it to string and deserializing it.
+        StreamReader reader = new StreamReader(Request.Body);
+        var requestBody = await reader.ReadToEndAsync();
+        dynamic userObject = JsonConvert.DeserializeObject<dynamic>(requestBody);
+        System.Console.WriteLine(userObject.Address.State);
+
+        // We can send Json response with custom status code and message as shown below
+        Person person = new Person()
+        {
+            Name = userObject.Name,
+            Age = userObject.Age,
+            Hobbies = JsonConvert.DeserializeObject<List<string>>(userObject.Hobbies.ToString())
+        };
+
         return StatusCode(200, new
         {
-            Message = "Custom message",
+            Message = "User data received",
+            data = person
         });
 
         //Other ways to return response with Predefined status codes
