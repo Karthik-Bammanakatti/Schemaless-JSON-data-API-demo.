@@ -115,4 +115,48 @@ public class DynamicJsonController : ControllerBase
             return $" Name : {person?.Name},\n Age : {person?.Age},\n Hobbies : {hobstr} \n";
         }
     }
+
+    [Route("Test")]
+    public IActionResult Test()
+    {
+        // We can send Json response wtih custom status code as shown below
+        return StatusCode(200, new
+        {
+            Message = "Custom message",
+        });
+
+        //Other ways to return response with Predefined status codes
+
+        // return Ok(new
+        // {
+        //     Message = "Custom message"
+        // });
+
+        // return Unauthorized(new
+        // {
+        //     Message = "Custom message"
+        // });
+
+        // return Forbid(new
+        // {
+        //     Message = "Custom message"
+        // });
+
+        // return BadRequest(new
+        // {
+        //     Message = "Custom message"
+        // });
+
+        // return Created(new
+        // {
+        //     Message = "Custom message"
+        // });
+
+
+        // return NotFound(new
+        // {
+        //     Message = "Custom message"
+        // });
+    }
+
 }
