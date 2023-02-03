@@ -20,15 +20,15 @@ public class DynamicJsonController : ControllerBase
     {
         JsonResult data = new JsonResult(new
         {
-            Name = "Karthik",
-            Age = 24,
+            Name = "John Doe",
+            Age = 27,
             Hobbies = new List<string> { "Swimming", "Bowling" },
-            Email = "kr70007@test.com",
+            Email = "john.doe@test.com",
             Address = new
             {
-                State = "Maharashtra",
-                City = "Panvel",
-                Pin = "410210"
+                State = "Ohio",
+                City = "Columbus",
+                Pin = "231-543"
             }
         });
         return data;
@@ -41,15 +41,15 @@ public class DynamicJsonController : ControllerBase
     {
         Object person = new
         {
-            Name = "Karthik",
-            Age = 24,
+            Name = "John Doe",
+            Age = 27,
             Hobbies = new List<string> { "Swimming", "Bowling" },
-            Email = "kr70007@test.com",
+            Email = "john.doe@test.com",
             Address = new
             {
-                State = "Maharashtra",
-                City = "Panvel",
-                Pin = "410210"
+                State = "Ohio",
+                City = "Columbus",
+                Pin = "231-543"
             }
         };
         return person;
